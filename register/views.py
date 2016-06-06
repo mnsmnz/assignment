@@ -11,7 +11,7 @@ class Home(TemplateView):
 
 
 class UserRegistrationView(AnonymousRequiredMixin, FormView):
-  template_name = "register_user.html"
+  template_name = "registration/user/register_user.html"
   authenticated_redirect_url = reverse_lazy(u"home")
   form_class = UserRegistrationForm
   success_url = '/register/user/success/'
@@ -20,3 +20,8 @@ class UserRegistrationView(AnonymousRequiredMixin, FormView):
   def form_valid(self, form):
       form.save()
       return FormView.form_valid(self, form)
+
+class AddChocolateView(FormView):
+      template_name = "add_chocolate.html"
+      form_class = ChocolateAddform
+      success_url = '/register/chocolate/success'

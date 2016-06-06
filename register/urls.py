@@ -1,8 +1,13 @@
-from django.conf.urls import include, url
-from register.views import *
 from register.models import *
+from django.conf.urls import url
+from django.views.generic import TemplateView
+from register.views import *
+
 urlpatterns = [
     url(r'^$', UserRegistrationView.as_view(), name='register_user'),
-    url(r'^user/success/', TemplateView.as_view(template_name='login.html'),
-        name='page')
+    url(r'^user/$', UserRegistrationView.as_view(), name='login'),
+    url(r'^user/success/', TemplateView.as_view(template_name='registration/user/success.html'),
+        name='user_registration_success'),
+    url(r'^chocolate/add/', AddChocolateView.as_view(), name='add_chocolate')
+
 ]
