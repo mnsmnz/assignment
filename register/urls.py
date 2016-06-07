@@ -8,6 +8,6 @@ urlpatterns = [
     url(r'^user/$', UserRegistrationView.as_view(), name='login'),
     url(r'^user/success/', TemplateView.as_view(template_name='registration/user/success.html'),
         name='user_registration_success'),
-    url(r'^chocolate/add/', AddChocolateView.as_view(), name='add_chocolate')
-
+    url(r'^chocolate/add/', AddChocolateview.as_view(), name='add_chocolate'),
+    url( r'^chocolate/info/(?P<choco_id>\d+)/$', ChocolateDetailsView.as_view(), name="chocolate_info")
 ]
